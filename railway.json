@@ -2,7 +2,14 @@
   "build": {
     "env": {
       "PYTHONUNBUFFERED": "1"
-    }
+    },
+    "builder": "nixpacks"
   },
-  "start": "streamlit run app.py --server.port $PORT --server.enableCORS false"
+  "start": "streamlit run app.py --server.port $PORT --server.enableCORS false --server.enableXsrfProtection false --server.headless true",
+  "healthcheck": {
+    "path": "/?health_check=true",
+    "interval": "30s",
+    "timeout": "5s",
+    "retries": 3
+  }
 }
