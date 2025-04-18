@@ -1,5 +1,13 @@
 import streamlit as st
 import random
+import os
+from streamlit.web.server.server import Server
+from streamlit.web.server.routes import get_health_route
+
+# Original health route is not directly accessible, but you can add a simple indicator
+if "health_check" in st.experimental_get_query_params():
+    st.write("OK")
+    st.stop()
 
 st.set_page_config(page_title="Monty Hall Game", page_icon="🚪", layout="centered")
 
